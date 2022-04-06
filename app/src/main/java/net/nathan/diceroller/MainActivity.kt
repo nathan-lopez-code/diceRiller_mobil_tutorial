@@ -16,11 +16,20 @@ class MainActivity : AppCompatActivity() {
         rollButton.setOnClickListener{
             //Toast.makeText(this, "roll : ${r}", Toast.LENGTH_SHORT).show()
             roll()
+            roll2()
         }
     }
     private fun roll(){
         val side = 6
         val diceText: TextView = findViewById(R.id.mytext)
+        val dice = Dice(side)
+
+        diceText.text = dice.roll().toString()
+    }
+
+    private fun roll2(){
+        val side = 6
+        val diceText: TextView = findViewById(R.id.secondtext)
         val dice = Dice(side)
 
         diceText.text = dice.roll().toString()
