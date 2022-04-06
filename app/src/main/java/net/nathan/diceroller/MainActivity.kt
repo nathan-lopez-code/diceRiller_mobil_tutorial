@@ -3,7 +3,8 @@ package net.nathan.diceroller
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
+// import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,24 +17,26 @@ class MainActivity : AppCompatActivity() {
         rollButton.setOnClickListener{
             //Toast.makeText(this, "roll : ${r}", Toast.LENGTH_SHORT).show()
             roll()
-            roll2()
         }
     }
     private fun roll(){
         val side = 6
-        val diceText: TextView = findViewById(R.id.mytext)
-        val dice = Dice(side)
+        val diceImage: ImageView = findViewById(R.id.myimage)
+        val dice = Dice(side).roll()
 
-        diceText.text = dice.roll().toString()
+        val draw = when(dice){
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+        diceImage.setImageResource(draw)
+        diceImage.contentDescription = dice.toString()
+
     }
 
-    private fun roll2(){
-        val side = 6
-        val diceText: TextView = findViewById(R.id.secondtext)
-        val dice = Dice(side)
-
-        diceText.text = dice.roll().toString()
-    }
 }
 
 class Dice(private val side: Int){
