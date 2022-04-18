@@ -9,4 +9,6 @@
     <string name="calculate">CALCULATE</string>
     <string name="amount">Tip Amount: %s</string>
     <string name="please_enter_value">Please enter some value on input text</string>
+    <string name="zero_value">impossible to do operation with zero value</string>
+
 </resources>

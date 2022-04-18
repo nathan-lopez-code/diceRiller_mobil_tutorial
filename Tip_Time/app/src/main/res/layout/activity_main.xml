@@ -1,28 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <EditText
+
+    <ImageView
+        android:id="@+id/service_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        app:srcCompat="@drawable/ic_store"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/first_input"
+        app:layout_constraintBottom_toBottomOf="@id/first_input" />
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/first_input"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:hint="@string/cost"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/service_cost"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        android:layout_marginStart="16dp"
+
+        android:hint="@string/cost">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/first_input_edit"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:inputType="numberDecimal"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/image_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        app:srcCompat="@drawable/ic_service"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/service_question"
+        app:layout_constraintBottom_toBottomOf="@id/service_question" />
+
 
     <TextView
         android:id="@+id/service_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/question"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        style="@style/TipTime.TextView"
+        app:layout_constraintStart_toEndOf="@id/image_question"
         app:layout_constraintTop_toBottomOf="@id/first_input"/>
 
     <RadioGroup
@@ -31,7 +69,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:checkedButton="@id/twenty_percent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/service_question"
         app:layout_constraintTop_toBottomOf="@id/service_question" >
         <RadioButton
             android:id="@+id/twenty_percent"
@@ -52,20 +90,32 @@
             android:text="@string/ok" />
 
     </RadioGroup>
-    <Switch
+    <ImageView
+        android:id="@+id/radio_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_round_up"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="@id/rounded"
+        app:layout_constraintTop_toTopOf="@id/rounded"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/rounded"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/radio_image"
         app:layout_constraintTop_toBottomOf="@id/tip_option"
         android:text="@string/switchs"
+        style="@style/text.On.switch"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
     <Button
         android:id="@+id/calculate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/rounded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rounded"
         android:text="@string/calculate"
@@ -76,11 +126,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Tip Amount: $10"
+        style="@style/TipTime.TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calculate"
+        android:layout_marginTop="8dp"
         />
 
 
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
